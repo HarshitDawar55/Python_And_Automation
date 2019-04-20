@@ -7,21 +7,19 @@ def check_century(n):
         l.append(r)
         n = n // 10
     if l[0] == 0 and l[1] == 0:
-        return 1, n
+        return 1
     else:
-        return -1, n
+        return -1
 
 
 def leap(n):
-    a, remainder = check_century(n)
-    mul_of_4 = [x for x in range(1, 1001) if x % 4 == 0]
+    a = check_century(n)
+    #mul_of_4 = [x for x in range(1, 1001) if x % 4 == 0]
     if a == 1:
-        if remainder in mul_of_4:
-            if n % 400 == 0 and n % 4 == 0:
-                return 1
-        if remainder not in mul_of_4:
-            if n % 4 == 0:
-                return 1
+        if n % 400 == 0:
+            return 1
+        else:
+            return -1
     if a == -1:
         if n % 4 == 0:
             return 1
